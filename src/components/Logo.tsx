@@ -42,15 +42,34 @@ const textSizes: Record<LogoSize, string> = {
 export function Logo({
   className,
   size = "default",
+  imageSrc,
 }: {
   className?: string;
   size?: LogoSize;
+  // Optional custom logo image uploaded through Tina (Site Settings ->
+  // Custom Logo Image). When set, it replaces the SVG mark below, but the
+  // "Witherspoon / Home Care" wordmark still renders alongside it so the
+  // business name stays legible even if the uploaded image is just an
+  // icon/symbol.
+  imageSrc?: string | null;
 }) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className ?? ""}`}>
-      <LogoMark
-        className={`${markSizes[size]} shrink-0 text-brand-pink-deep`}
-      />
+      {imageSrc ? (
+        // Arbitrary editor-uploaded image; next/image requires known
+        // dimensions or a fill parent, neither of which fits this inline
+        // logo slot well.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={imageSrc}
+          alt=""
+          className={`${markSizes[size]} shrink-0 rounded object-contain`}
+        />
+      ) : (
+        <LogoMark
+          className={`${markSizes[size]} shrink-0 text-brand-pink-deep`}
+        />
+      )}
       <span
         className={`font-heading font-bold leading-tight text-brand-ink ${textSizes[size]}`}
       >

@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Tina build artifacts: the admin app bundle (huge, minified,
+    // regenerated on every build) and the generated GraphQL client/types
+    // (also regenerated every build, not hand-written source).
+    "public/admin/**",
+    "tina/__generated__/**",
   ]),
 ]);
 

@@ -1,6 +1,5 @@
 import { Container } from "./Container";
 import { MapPinIcon } from "./icons";
-import { business } from "@/content/site-content";
 
 // A bold, brand-color callout band for the service area, meant to be far
 // more scannable than a plain text line. Deliberately not an actual county
@@ -11,7 +10,19 @@ import { business } from "@/content/site-content";
 // White section background (part of the sitewide pink/white alternation);
 // pink is used only as an accent here (badge, county chips), not as the
 // section fill.
-export function ServiceAreaBand() {
+export function ServiceAreaBand({
+  heading,
+  description,
+  primaryCity,
+  counties,
+  fieldAttrs,
+}: {
+  heading: string;
+  description: string;
+  primaryCity: string;
+  counties: string[];
+  fieldAttrs?: { heading?: string; description?: string };
+}) {
   return (
     <section
       aria-labelledby="service-area-heading"
@@ -25,18 +36,21 @@ export function ServiceAreaBand() {
           </span>
           <h2
             id="service-area-heading"
+            data-tina-field={fieldAttrs?.heading}
             className="mt-4 font-heading text-3xl font-extrabold text-brand-ink sm:text-4xl"
           >
-            Proudly Serving 8 Counties Across North Carolina
+            {heading}
           </h2>
-          <p className="mt-3 text-lg text-brand-slate">
-            Including {business.primaryCity} and the surrounding
-            communities.
+          <p
+            data-tina-field={fieldAttrs?.description}
+            className="mt-3 text-lg text-brand-slate"
+          >
+            {description || `Including ${primaryCity} and the surrounding communities.`}
           </p>
         </div>
 
         <ul className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-3">
-          {business.serviceCounties.map((county) => (
+          {counties.map((county) => (
             <li key={county}>
               <span className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-brand-pink-deep px-5 py-2.5 text-lg font-bold text-white">
                 {county} County

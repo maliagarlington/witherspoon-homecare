@@ -1,0 +1,33 @@
+{
+  "heroHeadline": "Compassionate Care that Feels Like Home",
+  "heroHeadlineAccent": "Like Home",
+  "heroSubheadline": "When a family member needs daily support but you still have to work, we step in so you don't have to worry.",
+  "heroButtonText": "Schedule a Free Consultation Today",
+  "heroVideoUrl": "",
+  "heroPoster": "/images/hero-poster.jpg",
+  "areasHeading": "Proudly Serving 8 Counties Across North Carolina",
+  "areasDescription": "Including Winston-Salem and the surrounding communities.",
+  "whyChooseHeading": "Why Families Choose Us",
+  "whyChooseReasons": [
+    {
+      "title": "Personalized, One-on-One Care",
+      "description": "Every client receives individual attention tailored to their unique needs, never a one-size-fits-all approach."
+    },
+    {
+      "title": "Comfort of Home",
+      "description": "Familiar surroundings reduce anxiety, especially for those with dementia or cognitive decline."
+    },
+    {
+      "title": "Family Peace of Mind",
+      "description": "We step in when you can't be there, giving you a trusted set of hands you can count on every day."
+    },
+    {
+      "title": "Affordable Alternative",
+      "description": "In-home care is often a fraction of the cost of assisted living facilities, without sacrificing quality."
+    }
+  ],
+  "howWeHelpIntro": "A few of the ways our caregivers support daily life at home.",
+  "testimonialsTeaser": "We're gathering our first family stories now. In the meantime, call us and we're happy to talk through how we can support your family, or connect you with a reference.",
+  "finalCtaHeading": "Let Us Be the Extra Set of Hands You Can Trust",
+  "finalCtaText": "Request a free consultation and we'll help you figure out the right kind of support for your family."
+}

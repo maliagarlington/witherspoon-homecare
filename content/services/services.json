@@ -1,0 +1,42 @@
+{
+  "pageHeading": "Non-Medical Home Care Services Across North Carolina",
+  "pageIntro": "We provide non-medical in-home senior care and companion care throughout our service area, including Winston-Salem, helping your loved one stay safe, comfortable, and independent at home.",
+  "services": [
+    {
+      "title": "Companion Care & Safety Sitting",
+      "tagline": "So they're never alone or at risk.",
+      "description": "Our companion care pairs your loved one with a caregiver who provides companionship and supervision, reducing fall risk and isolation for seniors living alone."
+    },
+    {
+      "title": "Rehab Support (PT/OT Exercises)",
+      "tagline": "Keeping them on track between appointments.",
+      "description": "We help clients stay consistent with physical and occupational therapy exercises prescribed by their care team, supporting recovery between scheduled appointments."
+    },
+    {
+      "title": "Medication Reminders",
+      "tagline": "No missed doses, no confusion.",
+      "description": "Caregivers provide timely reminders to take medication as prescribed, helping prevent missed or duplicate doses."
+    },
+    {
+      "title": "Meal Prep, Hydration & Feeding Help",
+      "tagline": "Making sure they stay nourished.",
+      "description": "From preparing meals to encouraging regular hydration and assisting with feeding when needed, we help ensure proper nutrition every day."
+    },
+    {
+      "title": "Daily Preparation",
+      "tagline": "Dressing & hygiene assistance.",
+      "description": "Respectful, dignified assistance with dressing and daily hygiene routines."
+    },
+    {
+      "title": "Errands",
+      "tagline": "From pharmacy runs to grocery store.",
+      "description": "Caregivers handle pharmacy pickups, grocery runs, and other errands so your loved one's essentials are always covered."
+    },
+    {
+      "title": "Light Housekeeping & Home Comfort Care",
+      "tagline": "A clean, safe space for recovery.",
+      "description": "Light housekeeping to keep the home clean, safe, and comfortable, supporting a healthy recovery and living environment."
+    }
+  ],
+  "ctaText": "Call us and we'll help you figure out the right plan of support."
+}

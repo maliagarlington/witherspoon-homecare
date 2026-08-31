@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type DragEvent, type FormEvent } from "react";
-import { business } from "@/content/site-content";
+import { toPhoneHref } from "@/lib/phone";
 import { UploadIcon, FileIcon } from "./icons";
 
 type Status = "idle" | "submitting" | "success" | "error" | "unconfigured";
@@ -20,8 +20,15 @@ function validateFile(file: File): string | null {
   return null;
 }
 
-export function ResumeUploadForm() {
+export function ResumeUploadForm({
+  phone,
+  email,
+}: {
+  phone: string;
+  email: string;
+}) {
   const [status, setStatus] = useState<Status>("idle");
+  const phoneHref = toPhoneHref(phone);
   const [fileName, setFileName] = useState<string | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -102,8 +109,8 @@ export function ResumeUploadForm() {
       >
         Thanks, we&rsquo;ll be in touch! We&rsquo;ve received your resume and
         will follow up soon. For anything urgent, call us at{" "}
-        <a href={business.phoneHref} className="underline">
-          {business.phone}
+        <a href={phoneHref} className="underline">
+          {phone}
         </a>
         .
       </div>
@@ -120,9 +127,9 @@ export function ResumeUploadForm() {
           {status === "unconfigured"
             ? "Online resume submission isn't fully set up on this site yet. "
             : "Something went wrong sending your resume. "}
-          Please call {business.phone} or email{" "}
-          <a href={`mailto:${business.email}`} className="font-bold underline">
-            {business.email}
+          Please call {phone} or email{" "}
+          <a href={`mailto:${email}`} className="font-bold underline">
+            {email}
           </a>{" "}
           directly and we&rsquo;ll help right away.
         </div>

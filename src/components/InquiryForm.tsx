@@ -1,12 +1,21 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { business } from "@/content/site-content";
+import { toPhoneHref } from "@/lib/phone";
 
 type Status = "idle" | "submitting" | "success" | "error" | "unconfigured";
 
-export function InquiryForm({ submitLabel }: { submitLabel: string }) {
+export function InquiryForm({
+  submitLabel,
+  phone,
+  email,
+}: {
+  submitLabel: string;
+  phone: string;
+  email: string;
+}) {
   const [status, setStatus] = useState<Status>("idle");
+  const phoneHref = toPhoneHref(phone);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -43,8 +52,8 @@ export function InquiryForm({ submitLabel }: { submitLabel: string }) {
       >
         Thank you. We&rsquo;ve received your message and will follow up soon.
         For anything urgent, call us at{" "}
-        <a href={business.phoneHref} className="underline">
-          {business.phone}
+        <a href={phoneHref} className="underline">
+          {phone}
         </a>
         .
       </div>
@@ -61,9 +70,9 @@ export function InquiryForm({ submitLabel }: { submitLabel: string }) {
           {status === "unconfigured"
             ? "Online form submission isn't fully set up on this site yet. "
             : "Something went wrong sending your message. "}
-          Please call {business.phone} or email{" "}
-          <a href={`mailto:${business.email}`} className="font-bold underline">
-            {business.email}
+          Please call {phone} or email{" "}
+          <a href={`mailto:${email}`} className="font-bold underline">
+            {email}
           </a>{" "}
           directly and we&rsquo;ll help right away.
         </div>

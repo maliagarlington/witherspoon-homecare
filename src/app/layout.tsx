@@ -7,6 +7,7 @@ import { MobileCallBar } from "@/components/MobileCallBar";
 import { business, siteUrl } from "@/content/site-content";
 import { services } from "@/content/services";
 import { organizationSchema, jsonLdScript } from "@/lib/schema";
+import client from "@tina/__generated__/client";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -55,7 +56,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  // Fetched once here (not in a client component) since the header, footer,
+  // and mobile call bar appear on every page: phone number, email, tagline,
+  // logo, and the counties list all come from the "Site Settings" document
+  // in Tina, so editing it there updates them everywhere at once.
+  const settings = await client.queries.settings({
+    relativePath: "settings.json",
+  });
+
   return (
     <html
       lang="en"
@@ -72,12 +81,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to main content
         </a>
-        <Header />
+        <Header settings={settings.data.settings} />
         <main id="main-content" className="flex-1 pb-20 lg:pb-0">
           {children}
         </main>
-        <Footer />
-        <MobileCallBar />
+        <Footer settings={settings.data.settings} />
+        <MobileCallBar settings={settings.data.settings} />
       </body>
     </html>
   );

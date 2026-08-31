@@ -1,0 +1,22 @@
+{
+  "pageHeading": "Caregiver Jobs Across North Carolina",
+  "pageIntro": "We're always hiring compassionate, reliable caregivers to join our team across our North Carolina service area.",
+  "cultureHeading": "Why Work With Us",
+  "cultureReasons": [
+    {
+      "title": "Meaningful Work",
+      "description": "Spend your day making a real difference in one family's life at a time, not rushing between quotas."
+    },
+    {
+      "title": "Flexible Scheduling",
+      "description": "We work with your availability: full-time, part-time, and shifts that fit real life."
+    },
+    {
+      "title": "Supportive Team",
+      "description": "You're never on your own. Our team is reachable when you need guidance or backup."
+    }
+  ],
+  "openingsNote": "",
+  "applyHeading": "Apply Now",
+  "applyText": "Fill out your details and upload your resume, and we'll be in touch. You can also call us directly."
+}

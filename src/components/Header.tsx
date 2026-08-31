@@ -7,11 +7,14 @@ import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { Button } from "./Button";
 import { MenuIcon, CloseIcon, PhoneIcon } from "./icons";
-import { business, nav } from "@/content/site-content";
+import { nav } from "@/content/site-content";
+import { toPhoneHref } from "@/lib/phone";
+import type { SettingsQuery } from "@tina/__generated__/types";
 
-export function Header() {
+export function Header({ settings }: { settings: SettingsQuery["settings"] }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const phoneHref = toPhoneHref(settings.phone ?? "");
 
   return (
     <header className="sticky top-0 z-40 border-b border-brand-pink-tint-2 bg-white">
@@ -21,7 +24,7 @@ export function Header() {
           className="rounded-md focus-visible:outline-3"
           onClick={() => setOpen(false)}
         >
-          <Logo size="large" />
+          <Logo size="large" imageSrc={settings.logoImage} />
         </Link>
 
         <nav
@@ -51,8 +54,8 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center lg:flex">
-          <Button href={business.phoneHref} variant="gold" icon={<PhoneIcon className="h-5 w-5" />}>
-            {business.phone}
+          <Button href={phoneHref} variant="gold" icon={<PhoneIcon className="h-5 w-5" />}>
+            {settings.phone}
           </Button>
         </div>
 
@@ -97,11 +100,11 @@ export function Header() {
               );
             })}
             <a
-              href={business.phoneHref}
+              href={phoneHref}
               className="my-2 flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap rounded-full bg-brand-gold px-5 font-heading text-base font-bold text-brand-ink sm:px-6 sm:text-lg"
             >
               <PhoneIcon className="h-5 w-5" />
-              Call {business.phone}
+              Call {settings.phone}
             </a>
           </Container>
         </nav>

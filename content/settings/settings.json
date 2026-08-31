@@ -1,0 +1,17 @@
+{
+  "businessName": "Witherspoon Home Care",
+  "tagline": "Caring for Your Loved Ones in the Comfort of Home",
+  "phone": "336-842-9744",
+  "email": "witherspoonhomecare@gmail.com",
+  "primaryCity": "Winston-Salem",
+  "serviceCounties": [
+    "Forsyth",
+    "Guilford",
+    "Davie",
+    "Davidson",
+    "Surry",
+    "Stokes",
+    "Rockingham",
+    "Yadkin"
+  ]
+}

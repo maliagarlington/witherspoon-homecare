@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/Container";
-import { Button } from "@/components/Button";
-import { TestimonialCard } from "@/components/TestimonialCard";
-import { PhoneIcon } from "@/components/icons";
-import { business, testimonials } from "@/content/site-content";
+import client from "@tina/__generated__/client";
 import { reviewSchema, jsonLdScript } from "@/lib/schema";
+import { TestimonialsPageClient } from "./TestimonialsPageClient";
 
 export const metadata: Metadata = {
   title: "Family Reviews of Our North Carolina Home Care",
@@ -12,55 +9,25 @@ export const metadata: Metadata = {
     "What families across Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham, and Yadkin Counties, NC say about the home care and companion care they've received from Witherspoon Home Care.",
 };
 
-export default function TestimonialsPage() {
-  const schema = reviewSchema(testimonials);
+export default async function TestimonialsPage() {
+  const [testimonials, settings] = await Promise.all([
+    client.queries.testimonials({ relativePath: "testimonials.json" }),
+    client.queries.settings({ relativePath: "settings.json" }),
+  ]);
+
+  const list = (testimonials.data.testimonials.testimonials ?? [])
+    .filter((t): t is NonNullable<typeof t> => t !== null)
+    .map((t) => ({ quote: t.quote ?? "", author: t.author ?? "" }));
+  const schema = reviewSchema(list);
 
   return (
     <>
-      <section className="bg-brand-pink-tint py-14 sm:py-20">
-        <Container className="max-w-3xl text-center">
-          <h1 className="font-heading text-4xl font-extrabold text-brand-ink sm:text-5xl">
-            What Families Across Our Service Area Say
-          </h1>
-          <p className="mt-6 text-xl text-brand-ink">
-            We&rsquo;re proud of the trust families place in us. Here&rsquo;s
-            what they have to say.
-          </p>
-        </Container>
-      </section>
-
-      <section className="bg-white py-16 sm:py-20">
-        <Container>
-          {testimonials.length > 0 ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {testimonials.map((t) => (
-                <TestimonialCard key={t.author} quote={t.quote} author={t.author} />
-              ))}
-            </div>
-          ) : (
-            <div className="mx-auto max-w-2xl rounded-2xl border-2 border-dashed border-brand-pink-tint-2 bg-brand-pink-tint p-8 text-center">
-              <h2 className="font-heading text-2xl font-bold text-brand-ink">
-                We&rsquo;re Collecting Our First Family Stories
-              </h2>
-              <p className="mt-4 text-lg text-brand-slate">
-                Testimonials from the families we serve will be posted here
-                soon. In the meantime, give us a call. We&rsquo;re happy to
-                talk through our approach directly, or connect you with a
-                reference.
-              </p>
-              <div className="mt-6 flex justify-center">
-                <Button
-                  href={business.phoneHref}
-                  icon={<PhoneIcon className="h-5 w-5" />}
-                >
-                  Call {business.phone}
-                </Button>
-              </div>
-            </div>
-          )}
-        </Container>
-      </section>
-
+      <TestimonialsPageClient
+        query={testimonials.query}
+        variables={testimonials.variables}
+        data={testimonials.data}
+        settings={settings.data.settings}
+      />
       {schema && (
         <script
           type="application/ld+json"
