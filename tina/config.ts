@@ -105,6 +105,29 @@ export default defineConfig({
             description:
               "One entry per county (just the name, e.g. \"Forsyth\", not \"Forsyth County\"). Shown as a list in the footer and on the homepage's \"Areas We Serve\" section.",
           },
+          {
+            type: "object",
+            name: "address",
+            label: "Office Address",
+            description:
+              "Shown in the footer and on the Contact page, and used for local search results (Google Maps, etc.). Leave the Street Address blank to hide the address everywhere it's shown.",
+            fields: [
+              {
+                type: "string",
+                name: "street",
+                label: "Street Address",
+                description: "e.g. \"214 E. Mountain Street, Ste. 100\"",
+              },
+              { type: "string", name: "city", label: "City" },
+              {
+                type: "string",
+                name: "state",
+                label: "State",
+                description: "Two-letter abbreviation, e.g. NC",
+              },
+              { type: "string", name: "zip", label: "ZIP Code" },
+            ],
+          },
         ],
       },
 
@@ -515,8 +538,29 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "hoursText",
-            label: "Hours",
+            name: "hoursIntro",
+            label: "Hours Intro Line",
+            description:
+              "Short line introducing the hours below, e.g. \"Care coordination and scheduling support is available:\"",
+          },
+          {
+            type: "string",
+            name: "weekdayHours",
+            label: "Weekday Hours",
+            description: "e.g. \"Monday – Friday, 9:00 AM – 4:00 PM EST\"",
+          },
+          {
+            type: "string",
+            name: "weekendHours",
+            label: "Weekend Hours",
+            description: "e.g. \"Saturday – Sunday, by appointment only\"",
+          },
+          {
+            type: "string",
+            name: "hoursNote",
+            label: "Hours Note",
+            description:
+              "Short closing line, e.g. \"Call or email anytime and we'll get back to you promptly.\"",
           },
           {
             type: "string",

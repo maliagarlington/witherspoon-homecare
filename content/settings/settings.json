@@ -13,5 +13,11 @@
     "Stokes",
     "Rockingham",
     "Yadkin"
-  ]
+  ],
+  "address": {
+    "street": "214 E. Mountain Street, Ste. 100",
+    "city": "Kernersville",
+    "state": "NC",
+    "zip": "27284"
+  }
 }

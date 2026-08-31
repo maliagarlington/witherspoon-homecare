@@ -91,7 +91,7 @@ export function CareersPageClient(props: {
               data-tina-field={tinaField(page, "applyText")}
               className="mt-3 text-lg text-brand-slate"
             >
-              {page.applyText} You can also call us directly at {settings.phone}.
+              {page.applyText}
             </p>
           </div>
           {/* No white-card wrapper needed here: the form's labels are

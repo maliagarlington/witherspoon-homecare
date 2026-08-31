@@ -1,7 +1,10 @@
 {
   "pageHeading": "Contact Our Team",
   "pageIntro": "Tell us a little about your situation and we'll follow up to talk through the right kind of support.",
-  "hoursText": "Care coordination and scheduling support is available every day. Call or email anytime and we'll get back to you promptly.",
+  "hoursIntro": "Care coordination and scheduling support is available:",
+  "weekdayHours": "Monday – Friday, 9:00 AM – 4:00 PM EST",
+  "weekendHours": "Saturday – Sunday, by appointment only",
+  "hoursNote": "Call or email anytime and we'll get back to you promptly.",
   "serviceAreaText": "We provide in-home care throughout our North Carolina service area, including Winston-Salem.",
   "formIntro": "Tell us a little about your situation and we'll follow up to talk through the right kind of support."
 }

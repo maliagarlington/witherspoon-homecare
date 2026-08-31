@@ -2,10 +2,18 @@ import { business, siteUrl } from "@/content/site-content";
 import type { FaqItem } from "@/content/faq";
 import type { Service } from "@/content/services";
 
+interface OfficeAddress {
+  street?: string | null;
+  city?: string | null;
+  state?: string | null;
+  zip?: string | null;
+}
+
 // JSON-LD structured data helpers.
-// TODO: once a public street address is confirmed, add it under "address"
-// (streetAddress, addressLocality, postalCode) for stronger local SEO.
-export function organizationSchema(allServices: Service[] = []) {
+export function organizationSchema(
+  allServices: Service[] = [],
+  officeAddress?: OfficeAddress | null,
+) {
   return {
     "@context": "https://schema.org",
     "@type": ["HomeHealthCareService", "LocalBusiness"],
@@ -16,11 +24,20 @@ export function organizationSchema(allServices: Service[] = []) {
     url: siteUrl,
     telephone: business.phone,
     email: business.email,
-    address: {
-      "@type": "PostalAddress",
-      addressRegion: "NC",
-      addressCountry: "US",
-    },
+    address: officeAddress?.street
+      ? {
+          "@type": "PostalAddress",
+          streetAddress: officeAddress.street,
+          addressLocality: officeAddress.city ?? undefined,
+          addressRegion: officeAddress.state ?? "NC",
+          postalCode: officeAddress.zip ?? undefined,
+          addressCountry: "US",
+        }
+      : {
+          "@type": "PostalAddress",
+          addressRegion: "NC",
+          addressCountry: "US",
+        },
     areaServed: [
       ...business.serviceCounties.map((county) => ({
         "@type": "AdministrativeArea",

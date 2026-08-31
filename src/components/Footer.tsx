@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
-import { PhoneIcon, MailIcon, MapPinIcon } from "./icons";
+import { PhoneIcon, MailIcon, MapPinIcon, BuildingIcon } from "./icons";
 import { nav } from "@/content/site-content";
 import { toPhoneHref } from "@/lib/phone";
 import type { SettingsQuery } from "@tina/__generated__/types";
@@ -11,6 +11,10 @@ export function Footer({ settings }: { settings: SettingsQuery["settings"] }) {
   const counties = (settings.serviceCounties ?? []).filter(
     (c): c is string => !!c,
   );
+  const address = settings.address;
+  const fullAddress = address?.street
+    ? `${address.street}, ${address.city}, ${address.state} ${address.zip}`
+    : null;
 
   return (
     <footer className="mt-20 border-t border-brand-pink-tint-2 bg-brand-pink-tint pb-24 pt-12 lg:pb-12">
@@ -55,6 +59,16 @@ export function Footer({ settings }: { settings: SettingsQuery["settings"] }) {
             <MailIcon className="h-5 w-5 shrink-0 text-brand-pink-deep" />
             {settings.email}
           </a>
+          {fullAddress && (
+            <p className="flex items-start gap-2 text-base font-medium text-brand-ink">
+              <BuildingIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-pink-deep" />
+              <span>
+                {address?.street}
+                <br />
+                {address?.city}, {address?.state} {address?.zip}
+              </span>
+            </p>
+          )}
           {/* Counties served: a small label + a wrapped, dot-separated
               list rather than one long comma sentence, so it scans at a
               glance instead of reading as another paragraph. Kept visually

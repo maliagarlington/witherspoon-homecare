@@ -73,7 +73,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col bg-white text-brand-ink">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={jsonLdScript(organizationSchema(services))}
+          dangerouslySetInnerHTML={jsonLdScript(
+            organizationSchema(services, settings.data.settings.address),
+          )}
         />
         <a
           href="#main-content"

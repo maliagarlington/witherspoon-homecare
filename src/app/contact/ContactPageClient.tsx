@@ -3,7 +3,7 @@
 import { useTina, tinaField } from "tinacms/dist/react";
 import { Container } from "@/components/Container";
 import { InquiryForm } from "@/components/InquiryForm";
-import { PhoneIcon, MailIcon, MapPinIcon, ClockIcon } from "@/components/icons";
+import { PhoneIcon, MailIcon, MapPinIcon, ClockIcon, BuildingIcon } from "@/components/icons";
 import { toPhoneHref } from "@/lib/phone";
 import type { ContactQuery, SettingsQuery } from "@tina/__generated__/types";
 
@@ -22,6 +22,13 @@ export function ContactPageClient(props: {
   const page = data.contact;
   const { settings } = props;
   const phoneHref = toPhoneHref(settings.phone ?? "");
+  const address = settings.address;
+  const fullAddress = address?.street
+    ? `${address.street}, ${address.city}, ${address.state} ${address.zip}`
+    : null;
+  const directionsHref = fullAddress
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`
+    : null;
 
   return (
     <>
@@ -67,6 +74,31 @@ export function ContactPageClient(props: {
               </span>
             </a>
 
+            {fullAddress && (
+              <div className="flex items-start gap-3 text-lg font-semibold text-brand-ink">
+                <BuildingIcon className="mt-0.5 h-6 w-6 shrink-0 text-brand-pink-deep" />
+                <span>
+                  <span className="block font-heading font-bold">Office Address</span>
+                  {address?.street}
+                  <br />
+                  {address?.city}, {address?.state} {address?.zip}
+                  {directionsHref && (
+                    <>
+                      {" "}
+                      <a
+                        href={directionsHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-brand-pink-deep underline underline-offset-4"
+                      >
+                        Get Directions
+                      </a>
+                    </>
+                  )}
+                </span>
+              </div>
+            )}
+
             <div className="flex items-start gap-3 text-lg font-semibold text-brand-ink">
               <MapPinIcon className="mt-0.5 h-6 w-6 shrink-0 text-brand-pink-deep" />
               <span>
@@ -79,12 +111,37 @@ export function ContactPageClient(props: {
 
             <div className="flex items-start gap-3 text-lg font-semibold text-brand-ink">
               <ClockIcon className="mt-0.5 h-6 w-6 shrink-0 text-brand-pink-deep" />
-              <span>
+              <div>
                 <span className="block font-heading font-bold">Hours</span>
-                <span data-tina-field={tinaField(page, "hoursText")}>
-                  {page.hoursText}
-                </span>
-              </span>
+                {page.hoursIntro && (
+                  <p
+                    data-tina-field={tinaField(page, "hoursIntro")}
+                    className="mt-1 text-base font-normal text-brand-slate"
+                  >
+                    {page.hoursIntro}
+                  </p>
+                )}
+                <ul className="mt-1 space-y-0.5">
+                  {page.weekdayHours && (
+                    <li data-tina-field={tinaField(page, "weekdayHours")}>
+                      {page.weekdayHours}
+                    </li>
+                  )}
+                  {page.weekendHours && (
+                    <li data-tina-field={tinaField(page, "weekendHours")}>
+                      {page.weekendHours}
+                    </li>
+                  )}
+                </ul>
+                {page.hoursNote && (
+                  <p
+                    data-tina-field={tinaField(page, "hoursNote")}
+                    className="mt-2 text-base font-normal text-brand-slate"
+                  >
+                    {page.hoursNote}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
 

@@ -69,7 +69,7 @@ export function AboutPageClient(props: {
             data-tina-field={tinaField(about, "storyText")}
             className="mx-auto mt-4 rounded-2xl border-2 border-dashed border-brand-pink-tint-2 bg-brand-pink-tint p-6 text-lg text-brand-slate"
           >
-            {about.storyText || "[Add your founder/owner story here.]"}
+            {about.storyText || ""}
           </p>
         </Container>
       </section>
