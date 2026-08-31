@@ -59,10 +59,10 @@ export default function OpengraphImage() {
             maxWidth: 950,
           }}
         >
-          Caring for Your Loved Ones — In the Comfort of Home
+          Compassionate Care that Feels Like Home
         </div>
         <div style={{ display: "flex", marginTop: 32, fontSize: 30, color: "#4b5768" }}>
-          In-home care serving Forsyth County, NC · {business.phone}
+          Home care across 8 NC counties · {business.phone}
         </div>
       </div>
     ),

@@ -7,9 +7,9 @@ import { business, testimonials } from "@/content/site-content";
 import { reviewSchema, jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Testimonials",
+  title: "Family Reviews of Our North Carolina Home Care",
   description:
-    "What families in Forsyth County, NC say about the care and support they've received from Witherspoon Home Care.",
+    "What families across Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham, and Yadkin Counties, NC say about the home care and companion care they've received from Witherspoon Home Care.",
 };
 
 export default function TestimonialsPage() {
@@ -18,9 +18,9 @@ export default function TestimonialsPage() {
   return (
     <>
       <section className="bg-brand-pink-tint py-14 sm:py-20">
-        <Container className="max-w-3xl">
+        <Container className="max-w-3xl text-center">
           <h1 className="font-heading text-4xl font-extrabold text-brand-ink sm:text-5xl">
-            What Families Say
+            What Families Across Our Service Area Say
           </h1>
           <p className="mt-6 text-xl text-brand-ink">
             We&rsquo;re proud of the trust families place in us. Here&rsquo;s
@@ -29,7 +29,7 @@ export default function TestimonialsPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           {testimonials.length > 0 ? (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -44,7 +44,7 @@ export default function TestimonialsPage() {
               </h2>
               <p className="mt-4 text-lg text-brand-slate">
                 Testimonials from the families we serve will be posted here
-                soon. In the meantime, give us a call — we&rsquo;re happy to
+                soon. In the meantime, give us a call. We&rsquo;re happy to
                 talk through our approach directly, or connect you with a
                 reference.
               </p>

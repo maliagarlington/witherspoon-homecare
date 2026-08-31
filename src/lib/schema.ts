@@ -1,16 +1,18 @@
 import { business, siteUrl } from "@/content/site-content";
 import type { FaqItem } from "@/content/faq";
+import type { Service } from "@/content/services";
 
 // JSON-LD structured data helpers.
 // TODO: once a public street address is confirmed, add it under "address"
 // (streetAddress, addressLocality, postalCode) for stronger local SEO.
-export function organizationSchema() {
+export function organizationSchema(allServices: Service[] = []) {
   return {
     "@context": "https://schema.org",
     "@type": ["HomeHealthCareService", "LocalBusiness"],
+    "@id": `${siteUrl}/#organization`,
     name: business.name,
     description:
-      "Non-medical in-home care agency providing companion care, medication reminders, meal prep, light housekeeping, and daily living support for seniors and recovering adults in Forsyth County, NC.",
+      "Non-medical in-home care agency providing companion care, medication reminders, meal prep, light housekeeping, and daily living support for seniors and recovering adults across Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham, and Yadkin Counties, North Carolina, including Winston-Salem.",
     url: siteUrl,
     telephone: business.phone,
     email: business.email,
@@ -19,11 +21,26 @@ export function organizationSchema() {
       addressRegion: "NC",
       addressCountry: "US",
     },
-    areaServed: {
-      "@type": "AdministrativeArea",
-      name: business.serviceArea,
-    },
+    areaServed: [
+      ...business.serviceCounties.map((county) => ({
+        "@type": "AdministrativeArea",
+        name: `${county} County, NC`,
+      })),
+      { "@type": "City", name: "Winston-Salem, NC" },
+      { "@type": "State", name: "North Carolina" },
+    ],
     priceRange: "$$",
+    ...(allServices.length > 0 && {
+      makesOffer: allServices.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          description: service.description,
+          areaServed: "North Carolina",
+        },
+      })),
+    }),
   };
 }
 

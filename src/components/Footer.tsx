@@ -8,8 +8,8 @@ export function Footer() {
   return (
     <footer className="mt-20 border-t border-brand-pink-tint-2 bg-brand-pink-tint pb-24 pt-12 lg:pb-12">
       <Container className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-        <div>
-          <Logo />
+        <div className="flex flex-col items-center text-center">
+          <Logo size="large" />
           <p className="mt-4 max-w-xs text-base text-brand-slate">
             {business.tagline}
           </p>
@@ -48,10 +48,31 @@ export function Footer() {
             <MailIcon className="h-5 w-5 shrink-0 text-brand-pink-deep" />
             {business.email}
           </a>
-          <p className="flex items-center gap-2 text-base font-medium text-brand-ink">
-            <MapPinIcon className="h-5 w-5 shrink-0 text-brand-pink-deep" />
-            Serving {business.serviceArea}
-          </p>
+          {/* Counties served: a small label + a wrapped, dot-separated
+              list rather than one long comma sentence, so it scans at a
+              glance instead of reading as another paragraph. Kept visually
+              quiet (small label, text-sm list) so it doesn't compete with
+              the logo or the phone/email above it. */}
+          <div className="flex items-start gap-2">
+            <MapPinIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-pink-deep" />
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wide text-brand-pink-deep">
+                Proudly Serving
+              </p>
+              <p className="mt-1 flex flex-wrap gap-x-1.5 gap-y-1 text-sm font-medium text-brand-ink">
+                {business.serviceCounties.map((county, index) => (
+                  <span key={county} className="inline-flex items-center gap-1.5">
+                    {county}
+                    {index < business.serviceCounties.length - 1 && (
+                      <span aria-hidden="true" className="text-brand-pink-deep">
+                        &middot;
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </p>
+            </div>
+          </div>
         </div>
       </Container>
 

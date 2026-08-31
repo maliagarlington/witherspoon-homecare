@@ -1,32 +1,34 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
-import { InquiryForm } from "@/components/InquiryForm";
+import { ResumeUploadForm } from "@/components/ResumeUploadForm";
 import { CheckCircleIcon } from "@/components/icons";
 import { careers, business } from "@/content/site-content";
 
 export const metadata: Metadata = {
-  title: "Careers",
+  title: "Caregiver Opportunities Across 8 NC Counties",
   description:
-    "Join Witherspoon Home Care as a caregiver in Forsyth County, NC. We're always hiring compassionate, reliable caregivers — apply today.",
+    "Join Witherspoon Home Care as a caregiver serving Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham, and Yadkin Counties, NC. We're always hiring compassionate, reliable home health aides. Apply today.",
 };
 
 export default function CareersPage() {
   return (
     <>
       <section className="bg-brand-pink-tint py-14 sm:py-20">
-        <Container className="max-w-3xl">
+        <Container className="max-w-3xl text-center">
           <h1 className="font-heading text-4xl font-extrabold text-brand-ink sm:text-5xl">
-            Join Our Care Team
+            Caregiver Jobs Across North Carolina
           </h1>
           <p className="mt-6 text-xl text-brand-ink">{careers.intro}</p>
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container>
-          <h2 className="font-heading text-3xl font-extrabold text-brand-ink">
-            Why Work With Us
-          </h2>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-heading text-3xl font-extrabold text-brand-ink">
+              Why Work With Us
+            </h2>
+          </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             {careers.culture.map((item) => (
               <div
@@ -47,15 +49,21 @@ export default function CareersPage() {
 
       <section className="bg-brand-pink-tint py-16 sm:py-20">
         <Container className="max-w-2xl">
-          <h2 className="font-heading text-3xl font-extrabold text-brand-ink">
-            Apply Now
-          </h2>
-          <p className="mt-3 text-lg text-brand-slate">
-            Tell us a bit about yourself and your availability, and we&rsquo;ll
-            be in touch. You can also call us directly at {business.phone}.
-          </p>
+          <div className="text-center">
+            <h2 className="font-heading text-3xl font-extrabold text-brand-ink">
+              Apply Now
+            </h2>
+            <p className="mt-3 text-lg text-brand-slate">
+              Fill out your details and upload your resume, and we&rsquo;ll
+              be in touch. You can also call us directly at {business.phone}.
+            </p>
+          </div>
+          {/* No white-card wrapper needed here: the form's labels are
+              text-brand-ink, which already has strong contrast directly on
+              this light-pink section (unlike the dark-pink version this
+              replaced, which needed the extra wrapper). */}
           <div className="mt-8">
-            <InquiryForm type="career" submitLabel="Submit Application" />
+            <ResumeUploadForm />
           </div>
         </Container>
       </section>

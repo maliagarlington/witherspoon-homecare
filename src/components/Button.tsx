@@ -26,7 +26,7 @@ export function Button({
   className?: string;
   icon?: ReactNode;
 }) {
-  const classes = `inline-flex min-h-[52px] min-w-[44px] items-center justify-center gap-2.5 rounded-full px-7 py-3 font-heading text-lg font-bold shadow-sm transition-colors ${variants[variant]} ${className}`;
+  const classes = `inline-flex min-h-[52px] min-w-[44px] items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-3 font-heading text-base font-bold shadow-sm transition-colors sm:gap-2.5 sm:px-7 sm:text-lg ${variants[variant]} ${className}`;
 
   const isExternal =
     href.startsWith("tel:") || href.startsWith("mailto:") || href.startsWith("http");

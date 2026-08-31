@@ -1,25 +1,41 @@
-// Core business info — pulled from Witherspoon Home Care flyer + presentation
+// Core business info, pulled from the Witherspoon Home Care flyer and presentation.
 // Verify phone/email are still current before launch.
 
 export const business = {
   name: "Witherspoon Home Care",
-  tagline: "Caring for Your Loved Ones — In the Comfort of Home",
+  tagline: "Caring for Your Loved Ones in the Comfort of Home",
   heroLine:
-    "When a family member needs daily support but you still have to work — we step in so you don't have to worry.",
+    "When a family member needs daily support but you still have to work, we step in so you don't have to worry.",
   phone: "336-842-9744",
   phoneHref: "tel:+13368429744",
   email: "witherspoonhomecare@gmail.com",
-  serviceArea: "Forsyth County, NC",
+  serviceCounties: [
+    "Forsyth",
+    "Guilford",
+    "Davie",
+    "Davidson",
+    "Surry",
+    "Stokes",
+    "Rockingham",
+    "Yadkin",
+  ],
+  serviceArea:
+    "Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham & Yadkin Counties, NC",
+  primaryCity: "Winston-Salem",
   closingLine:
     "Let us be the extra set of hands you can trust.",
 };
 
-// "Why Choose Us" section — from slide 5
+// Comma-joined county list for use in sentences, e.g.
+// "serving Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham, and Yadkin Counties".
+export const serviceCountiesList = `${business.serviceCounties.slice(0, -1).join(", ")}, and ${business.serviceCounties.at(-1)} Counties`;
+
+// "Why Choose Us" section, from slide 5.
 export const whyChooseUs = [
   {
     title: "Personalized, One-on-One Care",
     description:
-      "Every client receives individual attention tailored to their unique needs — never a one-size-fits-all approach.",
+      "Every client receives individual attention tailored to their unique needs, never a one-size-fits-all approach.",
   },
   {
     title: "Comfort of Home",
@@ -29,7 +45,7 @@ export const whyChooseUs = [
   {
     title: "Family Peace of Mind",
     description:
-      "We step in when you can't be there — a trusted set of hands you can count on every day.",
+      "We step in when you can't be there, giving you a trusted set of hands you can count on every day.",
   },
   {
     title: "Affordable Alternative",
@@ -38,7 +54,7 @@ export const whyChooseUs = [
   },
 ];
 
-// NC market stats — from slide 3 (AARP 2024 Survey). Good candidates for an
+// NC market stats, from slide 3 (AARP 2024 Survey). Good candidates for an
 // "About" or "Why In-Home Care" section, and solid factual material for LLMO
 // (llms.txt, FAQ schema) since they're specific and sourced.
 export const stats = [
@@ -66,7 +82,7 @@ export const stats = [
 
 // TODO: no testimonials in the source materials yet.
 // Once real client quotes come in, add them here as:
-// { quote: "...", author: "First name + last initial" }
+// { quote: "...", author: "First name and last initial" }
 export const testimonials: { quote: string; author: string }[] = [];
 
 export const siteUrl =
@@ -83,29 +99,29 @@ export const nav = [
 
 // About page copy.
 // TODO: the founder story and hiring/vetting specifics below are written as
-// safe, generic placeholders — replace with the real founder bio and the
+// safe, generic placeholders. Replace with the real founder bio and the
 // agency's actual screening steps before launch.
 export const about = {
   intro:
-    "Witherspoon Home Care is a family-owned home care agency serving Forsyth County, NC. We started this agency because our own family has walked the road of caring for an aging loved one while juggling work and daily life — and we wanted to build the kind of dependable, personal support we wished we'd had.",
+    "Witherspoon Home Care is a family-owned home care agency serving Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham, and Yadkin Counties in North Carolina, including Winston-Salem. We started this agency because our own family has walked the road of caring for an aging loved one while juggling work and daily life, and we wanted to build the kind of dependable, personal support we wished we'd had.",
   founderStoryPlaceholder:
-    "[Add founder/owner bio here — background, years of experience, and what led to starting Witherspoon Home Care. This is a strong trust signal for families and search engines alike.]",
+    "",
   hiringProcess: [
     "Every caregiver completes an in-person interview before joining our team.",
     "We check references and conduct a background screening prior to placement.",
-    "Caregivers are matched to clients based on needs, personality, and schedule — not assigned at random.",
+    "Caregivers are matched to clients based on needs, personality, and schedule, not assigned at random.",
     "We stay in touch with families after care begins to make sure the match is working.",
   ],
   hiringNote:
-    "[Confirm the specific background-check provider, training program, and any licensing/certification details, then update this list with the exact process.]",
+    "",
   mission:
-    "To give families in Forsyth County a trustworthy extra set of hands — so aging and recovering loved ones can stay safe, comfortable, and cared for at home, and the people who love them can stop carrying it alone.",
+    "To give families across our eight-county North Carolina service area a trustworthy extra set of hands, so aging and recovering loved ones can stay safe, comfortable, and cared for at home, and the people who love them can stop carrying it alone.",
 };
 
 // Careers page copy.
 export const careers = {
   intro:
-    "We're always hiring compassionate, reliable caregivers to join our team in Forsyth County.",
+    "We're always hiring compassionate, reliable caregivers to join our team across Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham, and Yadkin Counties, NC.",
   culture: [
     {
       title: "Meaningful Work",
@@ -115,7 +131,7 @@ export const careers = {
     {
       title: "Flexible Scheduling",
       description:
-        "We work with your availability — full-time, part-time, and shifts that fit real life.",
+        "We work with your availability: full-time, part-time, and shifts that fit real life.",
     },
     {
       title: "Supportive Team",
@@ -124,17 +140,17 @@ export const careers = {
     },
   ],
   openingsNote:
-    "[List current specific openings here, or keep the general \"always hiring\" messaging if positions are ongoing/rolling.]",
+    "",
 };
 
 // Contact page copy.
-// TODO: confirm exact hours of operation before launch — the line below is
+// TODO: confirm exact hours of operation before launch. The line below is
 // intentionally general until that's finalized.
 export const contact = {
   hoursNote:
-    "Care coordination and scheduling support is available every day — call or email anytime and we'll get back to you promptly.",
+    "Care coordination and scheduling support is available every day. Call or email anytime and we'll get back to you promptly.",
   serviceAreaDescription:
-    "We provide in-home care throughout Forsyth County, NC, including Winston-Salem and surrounding communities.",
+    "We provide in-home care throughout Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham, and Yadkin Counties in North Carolina, including Winston-Salem.",
   formIntro:
     "Tell us a little about your situation and we'll follow up to talk through the right kind of support.",
 };

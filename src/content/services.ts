@@ -1,11 +1,11 @@
-// Services list — from flyer "Our Home Health Support Services" + slide 4.
+// Services list, from the flyer "Our Home Health Support Services" and slide 4.
 // Each maps to a section/anchor on the Services page.
 
 export interface Service {
   slug: string;
   title: string;
   tagline: string; // short phrase from the source material
-  description: string; // slightly expanded for SEO/LLMO — edit as needed
+  description: string; // slightly expanded for SEO/LLMO, edit as needed
 }
 
 export const services: Service[] = [
@@ -14,7 +14,7 @@ export const services: Service[] = [
     title: "Companion Care & Safety Sitting",
     tagline: "So they're never alone or at risk.",
     description:
-      "A caregiver stays with your loved one to provide companionship and supervision, reducing fall risk and isolation for seniors living alone in Forsyth County.",
+      "Our companion care pairs your loved one with a caregiver who provides companionship and supervision, reducing fall risk and isolation for seniors living alone.",
   },
   {
     slug: "rehab-support",
@@ -56,6 +56,6 @@ export const services: Service[] = [
     title: "Light Housekeeping & Home Comfort Care",
     tagline: "A clean, safe space for recovery.",
     description:
-      "Light housekeeping to keep the home clean, safe, and comfortable — supporting a healthy recovery and living environment.",
+      "Light housekeeping to keep the home clean, safe, and comfortable, supporting a healthy recovery and living environment.",
   },
 ];

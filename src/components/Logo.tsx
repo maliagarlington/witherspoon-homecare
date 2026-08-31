@@ -21,11 +21,39 @@ export function LogoMark({ className }: { className?: string }) {
   );
 }
 
-export function Logo({ className }: { className?: string }) {
+type LogoSize = "default" | "large";
+
+// LogoMark is always sized with matching h-*/w-* utilities against its
+// square (0 0 64 64) viewBox, so it scales without ever stretching.
+const markSizes: Record<LogoSize, string> = {
+  default: "h-9 w-9",
+  large: "h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16",
+};
+
+// The two text lines are sized in `em`s off this base, so bumping it scales
+// both "WITHERSPOON" and "Home Care" together proportionally. Kept modest
+// on mobile (only the icon grows there) so the header never gets tight
+// against the hamburger button at 320px; grows further from `sm` up.
+const textSizes: Record<LogoSize, string> = {
+  default: "",
+  large: "text-lg sm:text-xl",
+};
+
+export function Logo({
+  className,
+  size = "default",
+}: {
+  className?: string;
+  size?: LogoSize;
+}) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className ?? ""}`}>
-      <LogoMark className="h-9 w-9 shrink-0 text-brand-pink-deep" />
-      <span className="font-heading font-bold leading-tight text-brand-ink">
+      <LogoMark
+        className={`${markSizes[size]} shrink-0 text-brand-pink-deep`}
+      />
+      <span
+        className={`font-heading font-bold leading-tight text-brand-ink ${textSizes[size]}`}
+      >
         <span className="block text-[0.7em] uppercase tracking-wide text-brand-pink-deep">
           Witherspoon
         </span>

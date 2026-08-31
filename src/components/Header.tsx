@@ -21,7 +21,7 @@ export function Header() {
           className="rounded-md focus-visible:outline-3"
           onClick={() => setOpen(false)}
         >
-          <Logo />
+          <Logo size="large" />
         </Link>
 
         <nav
@@ -98,7 +98,7 @@ export function Header() {
             })}
             <a
               href={business.phoneHref}
-              className="my-2 flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-brand-gold px-6 font-heading text-lg font-bold text-brand-ink"
+              className="my-2 flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap rounded-full bg-brand-gold px-5 font-heading text-base font-bold text-brand-ink sm:px-6 sm:text-lg"
             >
               <PhoneIcon className="h-5 w-5" />
               Call {business.phone}

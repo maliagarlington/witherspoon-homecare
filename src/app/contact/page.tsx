@@ -5,24 +5,24 @@ import { PhoneIcon, MailIcon, MapPinIcon, ClockIcon } from "@/components/icons";
 import { business, contact } from "@/content/site-content";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Our North Carolina Home Care Team",
   description:
-    "Contact Witherspoon Home Care at 336-842-9744 or witherspoonhomecare@gmail.com. Serving Forsyth County, NC with in-home care for seniors.",
+    "Contact Witherspoon Home Care at 336-842-9744 or witherspoonhomecare@gmail.com. Serving Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham, and Yadkin Counties, NC with non-medical in-home care for seniors.",
 };
 
 export default function ContactPage() {
   return (
     <>
       <section className="bg-brand-pink-tint py-14 sm:py-20">
-        <Container className="max-w-3xl">
+        <Container className="max-w-3xl text-center">
           <h1 className="font-heading text-4xl font-extrabold text-brand-ink sm:text-5xl">
-            Contact Us
+            Contact Our Team
           </h1>
           <p className="mt-6 text-xl text-brand-ink">{contact.formIntro}</p>
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
           <div className="flex flex-col gap-8">
             <a
@@ -69,7 +69,7 @@ export default function ContactPage() {
               Send Us a Message
             </h2>
             <div className="mt-6">
-              <InquiryForm type="general" submitLabel="Send Message" />
+              <InquiryForm submitLabel="Send Message" />
             </div>
           </div>
         </Container>

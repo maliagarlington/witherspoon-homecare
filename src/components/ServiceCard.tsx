@@ -5,14 +5,16 @@ import { CheckCircleIcon } from "./icons";
 export function ServiceCard({
   service,
   compact = false,
+  className = "",
 }: {
   service: Service;
   compact?: boolean;
+  className?: string;
 }) {
   return (
     <div
       id={compact ? undefined : service.slug}
-      className="scroll-mt-24 rounded-2xl border border-brand-pink-tint-2 bg-white p-6 shadow-sm sm:p-8"
+      className={`scroll-mt-24 rounded-2xl border border-brand-pink-tint-2 bg-white p-6 shadow-sm sm:p-8 ${className}`}
     >
       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-pink-tint">
         <CheckCircleIcon className="h-7 w-7 text-brand-pink-deep" />

@@ -5,13 +5,7 @@ import { business } from "@/content/site-content";
 
 type Status = "idle" | "submitting" | "success" | "error" | "unconfigured";
 
-export function InquiryForm({
-  type,
-  submitLabel,
-}: {
-  type: "general" | "career";
-  submitLabel: string;
-}) {
+export function InquiryForm({ submitLabel }: { submitLabel: string }) {
   const [status, setStatus] = useState<Status>("idle");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -25,7 +19,7 @@ export function InquiryForm({
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, type }),
+        body: JSON.stringify(data),
       });
 
       if (res.status === 503) {
@@ -47,7 +41,7 @@ export function InquiryForm({
         role="status"
         className="rounded-2xl border-2 border-brand-pink-deep bg-brand-pink-tint p-6 text-lg font-semibold text-brand-ink"
       >
-        Thank you — we&rsquo;ve received your message and will follow up soon.
+        Thank you. We&rsquo;ve received your message and will follow up soon.
         For anything urgent, call us at{" "}
         <a href={business.phoneHref} className="underline">
           {business.phone}
@@ -76,11 +70,11 @@ export function InquiryForm({
       )}
 
       <div className="flex flex-col gap-2">
-        <label htmlFor={`${type}-name`} className="text-lg font-bold text-brand-ink">
+        <label htmlFor="contact-name" className="text-lg font-bold text-brand-ink">
           Name
         </label>
         <input
-          id={`${type}-name`}
+          id="contact-name"
           name="name"
           type="text"
           required
@@ -90,11 +84,11 @@ export function InquiryForm({
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor={`${type}-phone`} className="text-lg font-bold text-brand-ink">
+        <label htmlFor="contact-phone" className="text-lg font-bold text-brand-ink">
           Phone
         </label>
         <input
-          id={`${type}-phone`}
+          id="contact-phone"
           name="phone"
           type="tel"
           required
@@ -104,11 +98,11 @@ export function InquiryForm({
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor={`${type}-email`} className="text-lg font-bold text-brand-ink">
+        <label htmlFor="contact-email" className="text-lg font-bold text-brand-ink">
           Email <span className="font-medium text-brand-slate">(optional)</span>
         </label>
         <input
-          id={`${type}-email`}
+          id="contact-email"
           name="email"
           type="email"
           autoComplete="email"
@@ -117,11 +111,11 @@ export function InquiryForm({
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor={`${type}-message`} className="text-lg font-bold text-brand-ink">
-          {type === "career" ? "Tell us about yourself" : "Message"}
+        <label htmlFor="contact-message" className="text-lg font-bold text-brand-ink">
+          Message
         </label>
         <textarea
-          id={`${type}-message`}
+          id="contact-message"
           name="message"
           required
           rows={5}
@@ -132,7 +126,7 @@ export function InquiryForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-2 inline-flex min-h-[52px] items-center justify-center rounded-full bg-brand-pink-deep px-7 font-heading text-lg font-bold text-white transition-colors hover:bg-[#93043f] disabled:opacity-60"
+        className="mt-2 inline-flex min-h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-brand-pink-deep px-5 font-heading text-base font-bold text-white transition-colors hover:bg-[#93043f] disabled:opacity-60 sm:px-7 sm:text-lg"
       >
         {status === "submitting" ? "Sending…" : submitLabel}
       </button>

@@ -1,4 +1,4 @@
-// FAQ content for the Services page — also powers FAQPage JSON-LD schema.
+// FAQ content for the Services page, which also powers the FAQPage JSON-LD schema.
 // Answers are written as plain, specific factual statements (good for AI/LLM
 // citation per the LLMO checklist), built only from confirmed source material.
 
@@ -11,7 +11,7 @@ export const faq: FaqItem[] = [
   {
     question: "What areas does Witherspoon Home Care serve?",
     answer:
-      "Witherspoon Home Care provides in-home care services throughout Forsyth County, NC, including Winston-Salem and the surrounding communities.",
+      "Witherspoon Home Care provides in-home care services throughout Forsyth, Guilford, Davie, Davidson, Surry, Stokes, Rockingham, and Yadkin Counties in North Carolina, including Winston-Salem.",
   },
   {
     question: "What services do your caregivers provide?",
@@ -34,8 +34,13 @@ export const faq: FaqItem[] = [
       "Call 336-842-9744 or email witherspoonhomecare@gmail.com to talk through your family's needs. You can also fill out the form on our Contact page and we'll follow up with you.",
   },
   {
-    question: "Do you provide medical care or nursing services?",
+    question: "Do you provide medical care or nursing services, or is this non-medical home care?",
     answer:
-      "Witherspoon Home Care focuses on non-medical daily support — companionship, safety supervision, medication reminders, and help with daily activities. We support and reinforce the plan set by your loved one's medical team rather than replacing skilled nursing or clinical care.",
+      "Witherspoon Home Care is a non-medical home care agency. Our caregivers provide companionship, safety supervision, medication reminders, and help with daily activities. We support and reinforce the plan set by your loved one's medical team rather than replacing skilled nursing or clinical care.",
+  },
+  {
+    question: "Is companion care covered by insurance?",
+    answer:
+      "Non-medical companion care is typically paid out of pocket or through long-term care insurance, and is not usually covered by Medicare. Some long-term care insurance policies do cover it, so check your specific plan or call us at 336-842-9744 and we can help you think through payment options.",
   },
 ];

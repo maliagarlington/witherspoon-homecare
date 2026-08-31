@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand palette — sourced from the Witherspoon Home Care flyer & presentation,
+  /* Brand palette, sourced from the Witherspoon Home Care flyer & presentation,
      adjusted where needed to clear WCAG AA contrast on white/light backgrounds. */
-  --color-brand-pink: #e8136a; /* bright brand pink — large text, decorative, backgrounds */
-  --color-brand-pink-deep: #bd0f56; /* AA-safe on white (6.2:1) — body-size text & solid buttons */
+  --color-brand-pink: #e8136a; /* bright brand pink, for large text, decorative, backgrounds */
+  --color-brand-pink-deep: #bd0f56; /* AA-safe on white (6.2:1), for body-size text & solid buttons */
   --color-brand-pink-tint: #fff5f9; /* very light pink section background */
   --color-brand-pink-tint-2: #f7e3ec; /* soft pink card/border background */
-  --color-brand-gold: #f0b429; /* accent only — icons, borders, badges. Not for text on white. */
+  --color-brand-gold: #f0b429; /* accent only, for icons, borders, badges. Not for text on white. */
   --color-brand-gold-deep: #a06c0a; /* AA-safe gold-toned text on white (~4.6:1), used sparingly */
   --color-brand-ink: #1a1a2e; /* primary body text */
   --color-brand-slate: #4b5768; /* secondary/muted text, AA-safe on white */
